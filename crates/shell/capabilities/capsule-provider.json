@@ -1,0 +1,10 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "capsule-provider",
+  "description": "Dapp capsule → broker provider bridge. Grants the capsule webview exactly one IPC command (provider_msg, the zero-authority EIP-1193 forwarder — same entry point and label-keyed authorization as the clbridge route), including from remote web origins: real dapps are https pages whose CSP/mixed-content rules block fetch() to custom schemes, so the bridge must ride Tauri's native IPC channel. The command re-checks the webview label host-side; broker authority is unchanged (display + forward only, the wallet decides).",
+  "windows": ["capsule"],
+  "remote": {
+    "urls": ["https://**", "http://**"]
+  },
+  "permissions": ["allow-provider-msg"]
+}

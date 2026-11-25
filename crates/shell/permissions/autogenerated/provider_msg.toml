@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-provider-msg"
+description = "Enables the provider_msg command without any pre-configured scope."
+commands.allow = ["provider_msg"]
+
+[[permission]]
+identifier = "deny-provider-msg"
+description = "Denies the provider_msg command without any pre-configured scope."
+commands.deny = ["provider_msg"]

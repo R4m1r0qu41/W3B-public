@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CipherLayer harness dapp</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; margin: 2rem; max-width: 46rem; }
+    button { display: block; margin: .5rem 0; padding: .5rem 1rem; font-size: 1rem; }
+    #log { background: #111; color: #9f9; padding: 1rem; white-space: pre-wrap;
+           font-family: monospace; font-size: .85rem; min-height: 12rem; border-radius: 6px; }
+    .warn { color: #c40; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Sample dapp (untrusted Zone B content)</h1>
+  <p class="warn">Nothing on this page is a confirmation surface. The wallet decides elsewhere.</p>
+
+  <button id="detect">1 · detect provider</button>
+  <button id="connect">2 · eth_requestAccounts (connect)</button>
+  <button id="send">3 · eth_sendTransaction (0-wei transfer — should confirm)</button>
+  <button id="drain">4 · unlimited approve (drain attempt — should be denied)</button>
+  <button id="unsupported">5 · eth_sign (unsupported — should 4200)</button>
+
+  <div id="log">log:\n</div>
+
+  <script>
+    const log = (m) => { document.getElementById("log").textContent += m + "\n"; };
+    let account = null;
+
+    document.getElementById("detect").onclick = () => {
+      log(window.cipherlayer && window.cipherlayer.isCipherLayer
+        ? "provider detected: window.cipherlayer"
+        : "no provider injected");
+    };
+
+    document.getElementById("connect").onclick = async () => {
+      try {
+        const accounts = await window.cipherlayer.request({ method: "eth_requestAccounts" });
+        account = accounts[0];
+        log("connected: " + JSON.stringify(accounts));
+      } catch (e) { log(`connect refused: code=${e.code} ${e.message}`); }
+    };
+
+    document.getElementById("send").onclick = async () => {
+      try {
+        const hash = await window.cipherlayer.request({
+          method: "eth_sendTransaction",
+          params: [{ from: account, to: "0x00000000000000000000000000000000000000bb", value: "0x0" }],
+        });
+        log("confirmed, tx hash: " + hash);
+      } catch (e) { log(`send refused: code=${e.code} ${e.message}`); }
+    };
+
+    document.getElementById("drain").onclick = async () => {
+      try {
+        const hash = await window.cipherlayer.request({
+          method: "eth_sendTransaction",
+          params: [{
+            from: account, to: "0x00000000000000000000000000000000000000cc",
+            data: "0x095ea7b30000000000000000000000000707070707070707070707070707070707070707ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          }],
+        });
+        log("UNEXPECTED: drain approved?! " + hash);
+      } catch (e) { log(`drain blocked as designed: code=${e.code} ${e.message}`); }
+    };
+
+    document.getElementById("unsupported").onclick = async () => {
+      try {
+        await window.cipherlayer.request({ method: "eth_sign", params: [] });
+        log("UNEXPECTED: eth_sign accepted");
+      } catch (e) { log(`eth_sign rejected as designed: code=${e.code} ${e.message}`); }
+    };
+  </script>
+</body>
+</html>

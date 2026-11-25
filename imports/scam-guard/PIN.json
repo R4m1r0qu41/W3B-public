@@ -1,0 +1,30 @@
+{
+  "pin_schema_version": "0.1",
+  "description": "Pinned Scam Guard (FPL) detector-contract artifacts consumed by the browser's future risk-display surfaces. Read-only copies; never edit in place.",
+  "source_repo": "Dev/CipherLayer/scam-guard",
+  "compatibility": {
+    "detector_contract_version": "0.1.0",
+    "compatibility_role": "consumer"
+  },
+  "pins": [
+    {
+      "artifact": "detector-output-schema",
+      "version": "1.0",
+      "source_commit": "cdf63a0d7256c0bd8191559ba879426051cca716",
+      "source_path": "exports/detector-output.v1.json",
+      "hash": "sha256:f0a0f67600a8de7ccd85aeb5b1aa1d50e000f8dafc84225085f18a629879a5ae",
+      "pinned_at": "2026-07-05",
+      "purpose": "Wire format of one detector finding, for browser-side risk evidence display (unknowns stay visible)."
+    },
+    {
+      "artifact": "reason-code-registry",
+      "version": "1.0",
+      "source_commit": "cdf63a0d7256c0bd8191559ba879426051cca716",
+      "source_path": "exports/reason-codes.v1.json",
+      "hash": "sha256:d8bd06112e18fad42be64af3b321c19bc22a069da9ec78e4e152d84c41882391",
+      "pinned_at": "2026-07-05",
+      "purpose": "Stable SG-* Reason Codes surfaced in connect-time and signing-time risk displays."
+    }
+  ],
+  "update_procedure": "Re-copy from scam-guard exports/ at a chosen commit; update source_commit, hashes, pinned_at; record semantic changes in an ADR."
+}

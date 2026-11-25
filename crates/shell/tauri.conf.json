@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "CipherLayer Shell",
+  "version": "0.1.0",
+  "identifier": "dev.cipherlayer.browser-shell",
+  "build": {
+    "frontendDist": "ui"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "label": "main",
+        "title": "CipherLayer Shell — evidence panel (NOT a confirmation surface)",
+        "url": "index.html",
+        "width": 560,
+        "height": 860,
+        "x": 40,
+        "y": 60
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src 'self' clbridge:; style-src 'self'; script-src 'self'"
+    }
+  },
+  "bundle": {
+    "active": false
+  }
+}

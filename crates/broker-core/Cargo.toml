@@ -1,0 +1,18 @@
+[package]
+name = "broker-core"
+version = "0.1.0"
+description = "CipherLayer Browser provider/capability broker (Zone C) — zero-authority plumbing between dapp capsules and the wallet's browser-connect contract"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+thiserror = { workspace = true }
+hex = { workspace = true }
+
+[dev-dependencies]
+jsonschema = { workspace = true }

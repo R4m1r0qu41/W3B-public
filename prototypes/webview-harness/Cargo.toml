@@ -1,0 +1,14 @@
+[package]
+name = "webview-harness"
+version = "0.1.0"
+description = "Provider-injection experiment (ADR-B001) — one WKWebView window, injected EIP-1193 provider, broker bridge to the wallet socket. NOT a product shell."
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+broker-core = { path = "../../crates/broker-core" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+wry = "0.47"
+tao = "0.30"

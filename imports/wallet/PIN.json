@@ -1,0 +1,30 @@
+{
+  "pin_schema_version": "0.1",
+  "description": "Pinned CipherLayer Wallet browser-connect contract v0.1 consumed by the browser repo. Read-only copies; never edit in place. Family convention per operator decision 2026-07-04 (wallet register AC-001), Arrow/Tarquin PIN format.",
+  "source_repo": "Dev/CipherLayer/wallet",
+  "compatibility": {
+    "browser_connect_version": "0.2.0",
+    "protocol_version": "0.4",
+    "compatibility_role": "consumer"
+  },
+  "pins": [
+    {
+      "artifact": "browser-connect-bundle",
+      "version": "0.2.0",
+      "source_commit": "f64682ef9dd28c251c43bc903cbad9d1e1ed384b",
+      "source_path": "exports/browser-connect-v0.1/",
+      "hash": "sha256:per-file, see SHA256SUMS (copied alongside)",
+      "pinned_at": "2026-07-17",
+      "purpose": "Browser-wallet protocol doc plus envelope, signing-request/response, dapp-permission, and wallet-capability schemas \u2014 the only interface through which this repo may talk to the wallet. v1.1: signing_request_id nullable for pre-Vault refusals. Refresh 2026-07-17: protocol v0.4 (ADR-019) \u2014 envelope v1.1 adds payload.kind typed_data/personal_message with typed_data_json/message_hex; signing-response v1.3 adds signature_hex; new rpc-query.v1 read-only whitelist proxy; v0.3 shapes unchanged (additive)."
+    }
+  ],
+  "files_sha256": {
+    "browser-wallet-protocol.md": "42bff0c77c790939632ae8d9239eadda68ec402b57d597296b21f096d0d44637",
+    "dapp-permission.v1.json": "5df4e572fee6ab844e7973e72677add60f979768a524471c6e7e69e450fd133d",
+    "signing-request.v1.json": "82f28f5d4716d2819022f08a55b2d410ffef66e922bb5b1cfe6026c9a1a7a822",
+    "signing-response.v1.json": "680df43787df097ccd889c7d42f7a9cf9f74c430e721453c74a30edabf05d1cb",
+    "transaction-request-envelope.v1.json": "01b7b5818949e21c7b757c1c7e63c41fa20b6d2240d2398017c6b89b4c222c6c",
+    "wallet-capability.v1.json": "d3b2ad2213bcbe54633c8ee3770527ef884d47c512b9790a0281765cd17c78ba"
+  },
+  "update_procedure": "Re-copy from wallet exports/browser-connect-v<X>/ at a chosen commit; update source_commit, hashes, pinned_at; update docs referencing changed semantics; record breaking changes in an ADR."
+}

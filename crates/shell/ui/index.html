@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CipherLayer Shell — evidence panel</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header>
+    <h1>CipherLayer Shell</h1>
+    <p class="role">Evidence display only — approve/reject happens on the wallet&rsquo;s
+      trusted surface (cipherlayer-vaultd system dialog). Nothing on this panel,
+      or in any browser window, is a confirmation surface.</p>
+  </header>
+
+  <section id="navbar" class="card">
+    <h2>Capsule address bar</h2>
+    <p class="note">Host-initiated only &mdash; this is trusted shell chrome (Zone C);
+      the dapp capsule has no route to navigate itself (Zone B stays isolated).</p>
+    <form id="nav-form">
+      <input id="nav-url" type="text" placeholder="https://opensea.io" autocomplete="off">
+      <button type="submit">Go</button>
+    </form>
+    <div id="nav-error" class="error" hidden></div>
+    <dl>
+      <div><dt>Loaded page</dt><dd id="nav-current" class="mono">&mdash;</dd></div>
+    </dl>
+  </section>
+
+  <section id="status" class="card">
+    <h2>Wallet link</h2>
+    <dl>
+      <div><dt>Transport</dt><dd id="st-transport">—</dd></div>
+      <div><dt>Host attestation</dt><dd id="st-attested">—</dd></div>
+      <div><dt>Capsule</dt><dd id="st-capsule">—</dd></div>
+      <div><dt>Chain</dt><dd id="st-chain">—</dd></div>
+      <div><dt>Accounts</dt><dd id="st-accounts">—</dd></div>
+    </dl>
+  </section>
+
+  <section id="review" class="card">
+    <h2>Latest signing review <span id="rv-state" class="badge">none yet</span></h2>
+    <div id="rv-empty">No signing request has been decided yet. Use the dapp
+      capsule window to connect and send a transaction.</div>
+    <div id="rv-body" hidden>
+      <dl>
+        <div><dt>Decoded intent</dt><dd id="rv-action">—</dd></div>
+        <div><dt>Intent confidence</dt><dd id="rv-confidence">—</dd></div>
+        <div><dt>Simulation</dt><dd id="rv-simulation">—</dd></div>
+        <div><dt>Risk level</dt><dd id="rv-risk">—</dd></div>
+        <div><dt>Policy verdict</dt><dd id="rv-verdict">—</dd></div>
+      </dl>
+      <div id="rv-reasons-wrap"><h3>Policy reasons</h3><ul id="rv-reasons"></ul></div>
+      <div id="rv-findings-wrap"><h3>Risk findings (detectors)</h3><ul id="rv-findings"></ul></div>
+      <div id="rv-unavailable-wrap" hidden><h3>Detectors unavailable</h3><ul id="rv-unavailable"></ul></div>
+      <dl>
+        <div><dt>Refusal codes</dt><dd id="rv-refusals">—</dd></div>
+        <div><dt>Tx hash</dt><dd id="rv-txhash" class="mono">—</dd></div>
+        <div><dt>Audit head</dt><dd id="rv-audit">—</dd></div>
+      </dl>
+      <p class="note">This evidence arrives with the wallet&rsquo;s terminal decision
+        (wallet ADR-014). It is display-only: the shell cannot approve, override,
+        or downgrade anything.</p>
+    </div>
+  </section>
+
+  <section id="activity-card" class="card">
+    <h2>Activity</h2>
+    <ul id="activity"></ul>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

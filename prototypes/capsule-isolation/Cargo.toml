@@ -1,0 +1,12 @@
+[package]
+name = "capsule-isolation"
+version = "0.1.0"
+description = "Capsule-isolation measurement experiment (ADR-B001 second experiment) — measures whether wallet permission scoping actually isolates capsules. Feeds engine ADR-B002. NOT a product."
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+broker-core = { path = "../../crates/broker-core" }
+serde_json = { workspace = true }
+uuid = { workspace = true }

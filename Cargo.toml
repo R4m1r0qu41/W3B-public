@@ -1,0 +1,17 @@
+[workspace]
+resolver = "2"
+members = ["crates/broker-core", "crates/shell", "prototypes/provider-harness", "prototypes/webview-harness", "prototypes/capsule-isolation"]
+
+[workspace.package]
+edition = "2021"
+license = "Apache-2.0"
+publish = false
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v7", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+thiserror = "2"
+hex = "0.4"
+jsonschema = "0.56"

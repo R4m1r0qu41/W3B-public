@@ -1,0 +1,13 @@
+[package]
+name = "provider-harness"
+version = "0.1.0"
+description = "Compatibility harness (ADR-B001 experiment 3) — drives the browser-connect contract against a live wallet over the v0.4 transport (ADR-019). NOT a product."
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+broker-core = { path = "../../crates/broker-core" }
+serde_json = { workspace = true }
+uuid = { workspace = true }
+hex = { workspace = true }

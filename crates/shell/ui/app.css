@@ -1,0 +1,99 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --ink: #1a2029;
+  --muted: #5c6673;
+  --line: #d9dee5;
+  --accent: #2456c8;
+  --ok: #1a7f4b;
+  --warn: #a05a00;
+  --bad: #b3261e;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171c;
+    --card: #1d2129;
+    --ink: #e8eaee;
+    --muted: #9aa3af;
+    --line: #323844;
+    --accent: #7fa4ff;
+    --ok: #4cc38a;
+    --warn: #e2a336;
+    --bad: #ff8f88;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 1rem;
+  font: 14px/1.45 -apple-system, "Helvetica Neue", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+header h1 { margin: 0 0 .25rem; font-size: 1.2rem; }
+.role {
+  margin: 0 0 1rem;
+  padding: .5rem .75rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--warn);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: .85rem;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  margin-bottom: 1rem;
+}
+.card h2 { margin: 0 0 .5rem; font-size: .95rem; }
+.card h3 { margin: .6rem 0 .25rem; font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+dl { margin: 0; }
+dl div { display: flex; gap: .5rem; padding: .15rem 0; }
+dt { flex: 0 0 9.5rem; color: var(--muted); }
+dd { margin: 0; word-break: break-all; }
+.mono { font-family: ui-monospace, Menlo, monospace; font-size: .85rem; }
+.badge {
+  display: inline-block;
+  padding: .1rem .5rem;
+  border-radius: 99px;
+  font-size: .75rem;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  vertical-align: middle;
+}
+.badge.ok { color: var(--ok); border-color: var(--ok); }
+.badge.warn { color: var(--warn); border-color: var(--warn); }
+.badge.bad { color: var(--bad); border-color: var(--bad); }
+ul { margin: .25rem 0; padding-left: 1.1rem; }
+li { margin: .15rem 0; }
+#activity li { color: var(--muted); font-size: .85rem; }
+#activity li time { color: var(--ink); font-family: ui-monospace, Menlo, monospace; font-size: .75rem; margin-right: .4rem; }
+.note { color: var(--muted); font-size: .8rem; }
+.finding .codes { font-family: ui-monospace, Menlo, monospace; font-size: .8rem; }
+.risk-high, .verdict-deny { color: var(--bad); font-weight: 600; }
+.risk-medium, .verdict-escalate { color: var(--warn); font-weight: 600; }
+.risk-low, .verdict-allow { color: var(--ok); }
+.risk-unknown { color: var(--warn); font-weight: 600; }
+#nav-form { display: flex; gap: .5rem; margin-bottom: .5rem; }
+#nav-form input {
+  flex: 1;
+  padding: .4rem .6rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+}
+#nav-form button {
+  padding: .4rem 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+.error { color: var(--bad); font-size: .8rem; margin-bottom: .5rem; }
